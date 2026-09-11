@@ -1,0 +1,12 @@
+[Unit]
+Description=Media Data Retention Policy Execution Service
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=root
+WorkingDirectory=/opt/automation
+Environment="RETENTION_CONFIG_PATH=/opt/automation/config.json"
+ExecStart=/usr/bin/python3 /opt/automation/data_retention_agent.py
+StandardOutput=journal
+StandardError=journal
